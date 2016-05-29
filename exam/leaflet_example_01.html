@@ -16,7 +16,7 @@
                 // create a map in the "map_elemnt" div,
                 // set the view to a given place and zoom
                 var map = L.map('map_elemnt');
-                map.setView([34.40, 135.90], 11);
+                map.setView([35.00, 135.00], 11);
  
                 // add an OpenStreetMap tile layer
                 var tileLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -26,7 +26,7 @@
  
                 // add a marker in the given location,
                 // attach some popup content to it and open the popup
-                var mapMarker = L.marker([34.40, 135.90]);
+                var mapMarker = L.marker([35.40, 139.50]);
                 mapMarker.addTo(map);
                 mapMarker.bindPopup('CSS3 popup. <br> ここはどこでしょうか？');
                 mapMarker.openPopup();
