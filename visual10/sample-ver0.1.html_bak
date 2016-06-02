@@ -108,12 +108,6 @@
 	function resetHighlight(e) {
 		geojson.resetStyle(e.target);
 		info.update();
-                layer.setStyle({
-                        weight: 5,
-                        color: 'white',
-                        dashArray: '',
-                        fillOpacity: 0.7
-                });
 	}
 
 	function zoomToFeature(e) {
