@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang='ja'>
+    <head>
+        <meta charset='utf-8' />
+        <title>leaflet example 01 OpenSterrtMap</title>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+        <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+        <![endif]-->
+        <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+        <script src="./kobe-map.geojson"></script>
+        <script type='text/javascript'>
+         
+            //leaflet OSM map
+            function init() {
+ 
+                // create a map in the "map_elemnt" div,
+                // set the view to a given place and zoom
+                var map = L.map('map_elemnt');
+                map.setView([34.722000, 135.119000], 12);
+ 
+                // add an OpenStreetMap tile layer
+                var tileLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                    attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                });
+                tileLayer.addTo(map);
+ 
+                // add a marker in the given location,
+                // attach some popup content to it and open the popup
+                //var mapMarker = L.marker([34.723500, 135.108000]);
+                var mapMarker = L.marker([34.690143, 135.195512]);
+                mapMarker.addTo(map);
+                mapMarker.bindPopup('空き家情報①<br> 物件名：hogehoge<br> 住所：Adress1 Address2 Address3<br> 間取り：4LDK<br> <a href="http://www.city.kobe.lg.jp" target="_blank">詳細情報はコチラ</a>  ');
+                mapMarker.openPopup();
+                 
+                // add layers
+                var baseLayers = {
+                    "OpenStreetMap": tileLayer
+                };
+                var overlays = {
+                    "Marker": mapMarker,
+                };
+                L.control.layers(baseLayers, overlays).addTo(map);
+                
+               // control that shows state info on hover
+               var InfoControl = L.Control.extend({
+               
+               onAdd: function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+               },
+               
+               update: function (props) {
+                this._div.innerHTML = '<h4>Vacancy rate of Kobe</h4>' +  (props ?
+                '<b>' + props.N03_004 + '</b><br />' + props.N03_008 + '%'
+                : 'Hover over a prefecture');
+               }
+               });
+               
+               var info = new InfoControl();
+               info.addTo(map);
+
+          
+                function getColor(d) {
+                return d > 22 ? '#800026' :
+                    d > 20  ? '#BD0026' :
+                    d > 18  ? '#E31A1C' :
+                    d > 16  ? '#FC4E2A' :
+                    d > 14   ? '#FD8D3C' :
+                    d > 12   ? '#FEB24C' :
+                    d > 10   ? '#FED976' :
+                    '#FFEDA0';
+                }
+                
+                function style(feature) {
+                return {
+				    weight: 2,
+				    opacity: 1,
+				    color: 'white',
+				    dashArray: '3',
+				    fillOpacity: 0.7,
+				    fillColor: getColor(feature.properties.N03_008)
+			    };
+		        }  
+                
+                
+                	function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 5,
+			color: '#666',
+			dashArray: '',
+			fillOpacity: 0.7
+		});
+
+		if (!L.Browser.ie && !L.Browser.opera) {
+			layer.bringToFront();
+		}
+
+		info.update(layer.feature.properties);
+	}
+
+	var geojson;
+
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		info.update();
+	}
+
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
+
+
+                
+                
+                
+                            
+ 
+                // add control scale 
+                L.control.scale().addTo(map);
+
+                // add geoJson 
+                L.geoJson(kobeCity, {style: style,
+		onEachFeature: onEachFeature}).addTo(map);
+                
+
+/*                
+                var legend = L.control({position: 'bottomright'});
+
+		legend.onAdd = function (map) {
+
+			var div = L.DomUtil.create('div', 'info legend'),
+				grades = [0, 10, 12, 14, 16, 18, 20, 22],
+				labels = [],
+				from, to;
+
+			for (var i = 0; i < grades.length; i++) {
+				from = grades[i];
+				to = grades[i + 1];
+
+				labels.push(
+					'<i style="background:' + getColor(from + 1) + '"></i> ' +
+					from + (to ? '&ndash;' + to : '+'));
+			}
+
+			div.innerHTML = labels.join('<br>');
+			return div;
+		};
+
+		legend.addTo(map);
+
+*/
+ 
+ 
+            }
+        </script>
+    </head>
+    <body onload='init();'>
+        <div id='map_elemnt' style='width: 1200px; height: 700px; border: solid 1px #999;'></div>
+    </body>
+</html>
