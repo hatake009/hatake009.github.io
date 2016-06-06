@@ -131,6 +131,10 @@
 				var kita_att = L.marker(kita_ex_latlng, {icon: atticon2});
 				//須磨区
 				var suma_att = L.marker(suma_ex_latlng, {icon: atticon2});
+
+                                //高齢者率（レイヤー群）
+                                var EmptyNumber = L.layerGroup([tyuou_rate,nishi_rate,tarumi_rate,suma_rate,nagata_rate,
+                                                        hyougo_rate,nada_rate,eastnada_rate,kita_rate,average_rate]);
 								
 				//高齢者率（レイヤー群）
 				var OldRate = L.layerGroup([tyuou_rate,nishi_rate,tarumi_rate,suma_rate,nagata_rate,
@@ -145,6 +149,7 @@
                 };
                 var overlays = {
                   //  "Marker": mapMarker
+                        "空家世帯数" : EmptyNumber,
                   	"高齢者世帯率" : OldRate,
                   	"空家率 X 高齢者" : EmptyRate
                 };
