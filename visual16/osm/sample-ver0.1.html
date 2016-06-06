@@ -35,6 +35,18 @@
                 mapMarker.bindPopup('空き家情報①<br> 物件名：hogehoge<br> 住所：Adress1 Address2 Address3<br> 間取り：4LDK<br> <a href="http://www.city.kobe.lg.jp" target="_blank">詳細情報はコチラ</a>  ');
                 mapMarker.openPopup();
 */
+                                //中心地ずらし
+                                var nishi_numberling = [34.713143, 135.186512];
+                                var tyuou_numberling = [34.743324, 135.009059];
+                                var tarumi_numberling = [34.682672, 135.058635];
+                                var suma_numberling = [34.695356, 135.087278];
+                                var nagata_numberling = [34.671111, 135.131792];
+                                var hyougo_numberling = [34.703578, 135.156292];
+                                var nada_numberling = [34.762107, 135.208968];
+                                var eastnada_numberling = [34.743228, 135.256455];
+                                var kita_numberling = [34.779923, 135.146782];
+                                var average_numberling = [34.821830, 134.965225];
+
 				//各区の中心地
 				var nishi_latlng = [34.690143, 135.195512];
 				var tyuou_latlng = [34.720324, 135.018059];
@@ -88,34 +100,34 @@
                                 //空き家世帯数
                                 //中央区
                                 var tyuou_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
-                                var tyuou_number =  L.marker(tyuou_latlng, {icon: tyuou_number_icon});
+                                var tyuou_number =  L.marker(tyuou_numberling, {icon: tyuou_number_icon});
                                 //西区
                                 var nishi_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
-                                var nishi_number = L.marker(nishi_latlng,{icon: nishi_number_icon});
+                                var nishi_number = L.marker(nishi_numberling,{icon: nishi_number_icon});
                                 //垂水区
                                 var tarumi_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
-                                var tarumi_number = L.marker(tarumi_latlng,{icon: tarumi_number_icon});
+                                var tarumi_number = L.marker(tarumi_numberling,{icon: tarumi_number_icon});
                                 //須磨区
                                 var suma_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
-                                var suma_number = L.marker(suma_latlng,{icon: suma_number_icon});
+                                var suma_number = L.marker(suma_numberling,{icon: suma_number_icon});
                                 //長田区
                                 var nagata_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
-                                var nagata_number = L.marker(nagata_latlng,{icon: nagata_number_icon});
+                                var nagata_number = L.marker(nagata_numberling,{icon: nagata_number_icon});
                                 //兵庫区
                                 var hyougo_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
-                                var hyougo_number = L.marker(hyougo_latlng,{icon: hyougo_number_icon});
+                                var hyougo_number = L.marker(hyougo_numberling,{icon: hyougo_number_icon});
                                 //灘区
                                 var nada_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
-                                var nada_number = L.marker(nada_latlng,{icon: nada_number_icon});
+                                var nada_number = L.marker(nada_numberling,{icon: nada_number_icon});
                                 //東灘区
                                 var eastnada_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
-                                var eastnada_number = L.marker(eastnada_latlng,{icon: eastnada_number_icon});
+                                var eastnada_number = L.marker(eastnada_numberling,{icon: eastnada_number_icon});
                                 //北区
                                 var kita_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
-                                var kita_number = L.marker(kita_latlng,{icon: kita_number_icon});
+                                var kita_number = L.marker(kita_numberling,{icon: kita_number_icon});
                                 //全国平均
                                 var average_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
-                                var average_number = L.marker(average_latlng,{icon: average_number_icon});
+                                var average_number = L.marker(average_numberling,{icon: average_number_icon});
 
 
                                 //高齢者世帯率
