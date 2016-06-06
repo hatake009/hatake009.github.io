@@ -156,7 +156,6 @@
                onAdd: function (map) {
                 this._div = L.DomUtil.create('div', 'info');
                 this.update();
-                this.pic();
                 return this._div;
                },
                
@@ -165,12 +164,6 @@
                 '<b>' + props.N03_004 + '</b><br />' + props.N03_008 + '%'
                 : 'Hover over a prefecture');
                }
-
-
-               pic: function (props) {
-		return;
-               }
-
                });
                
                
