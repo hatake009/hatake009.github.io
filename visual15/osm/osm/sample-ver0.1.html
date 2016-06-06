@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang='ja'>
+    <head>
+        <meta charset='utf-8' />
+        <title>Vacant Houses of Kobe OpenSterrtMap</title>
+        <link rel="stylesheet" href="css/leaflet.css" />
+        <link rel="stylesheet" href="css/map.css" />
+        <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+        <![endif]-->
+        <script src="js/leaflet.js"></script>
+        <script src="./kobe-map.geojson"></script>
+        <script type='text/javascript'>
+         
+            //leaflet OSM map
+            function init() {
+ 
+                // create a map in the "map_elemnt" div,
+                // set the view to a given place and zoom
+                var map = L.map('map_elemnt');
+                map.setView([34.722000, 135.119000], 12);
+ 
+                // add an OpenStreetMap tile layer
+                var tileLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                    attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                });
+                tileLayer.addTo(map);
+ 
+                // add a marker in the given location,
+                // attach some popup content to it and open the popup
+                //var mapMarker = L.marker([34.723500, 135.108000]);
+/*                var mapMarker = L.marker([34.690143, 135.195512]);
+                mapMarker.addTo(map);
+                mapMarker.bindPopup('空き家情報①<br> 物件名：hogehoge<br> 住所：Adress1 Address2 Address3<br> 間取り：4LDK<br> <a href="http://www.city.kobe.lg.jp" target="_blank">詳細情報はコチラ</a>  ');
+                mapMarker.openPopup();
+*/
+				//各区の中心地
+				var nishi_latlng = [34.690143, 135.195512];
+				var tyuou_latlng = [34.720324, 135.018059];
+				var tarumi_latlng = [34.659672, 135.067635];
+				var suma_latlng = [34.672356, 135.096278];
+				var nagata_latlng = [34.648111, 135.140792];
+				var hyougo_latlng = [34.680578, 135.165292];
+				var nada_latlng = [34.739107, 135.217968];
+				var eastnada_latlng = [34.720228, 135.265455];
+				var kita_latlng = [34.756923, 135.155782];
+				var average_latlng = [34.798830, 134.965225];
+				
+				//空き家率 X 高齢者世帯率　共に高い区
+				var nishi_ex_latlng = [34.690143, 135.195512];
+				var tyuou_ex_latlng = [34.720324, 135.018059];
+				var tarumi_ex_latlng = [34.647441, 135.053851];
+				var suma_ex_latlng = [34.658638, 135.109586];
+				var nagata_ex_latlng = [34.667319, 135.151745];
+				var hyougo_ex_latlng = [34.657544, 135.174017];
+				var nada_ex_latlng = [34.739107, 135.217968];
+				var eastnada_ex_latlng = [34.720228, 135.265455];
+				var kita_ex_latlng = [34.765186, 135.183108];
+				var average_ex_latlng = [34.798830, 134.965225];
+				
+				
+				//高齢者率
+/*				
+				var c_style = {	color: 'gray',fillColor: 'gray',fillOpacity: 0.8,label:'LABEL'};				
+				//中央区
+				var tyuou_rate = L.circle(tyuou_latlng, 2000, c_style);
+				//西区
+				var nishi_rate = L.circle(nishi_latlng, 2000, c_style);
+				//垂水区
+				var tarumi_rate = L.circle(tarumi_latlng,2000, c_style);
+				//須磨区
+				var suma_rate = L.circle(suma_latlng,2000, c_style);
+				//長田区
+				var nagata_rate = L.circle(nagata_latlng,2000, c_style);				
+				//兵庫区
+				var hyougo_rate = L.circle(hyougo_latlng,2000, c_style);
+				//灘区
+				var nada_rate = L.circle(nada_latlng,2000, c_style);
+				//東灘区
+				var eastnada_rate = L.circle(eastnada_latlng,2000, c_style);
+				//北区
+				var kita_rate = L.circle(kita_latlng,2000, c_style);
+				//全国平均
+				var average_rate = L.circle(average_latlng,2000, c_style);				
+				
+*/
+
+				//中央区
+				var tyuou_icon = L.icon({iconUrl: 'img/chuuoh.png', iconSize: [90,90]});
+				var tyuou_rate =  L.marker(tyuou_latlng, {icon: tyuou_icon});
+				//西区
+				var nishi_icon = L.icon({iconUrl: 'img/nishi.png', iconSize: [90,90]});
+				var nishi_rate = L.marker(nishi_latlng,{icon: nishi_icon});
+				//垂水区
+				var tarumi_icon = L.icon({iconUrl: 'img/tarumi.png', iconSize: [90,90]});
+				var tarumi_rate = L.marker(tarumi_latlng,{icon: tarumi_icon});
+				//須磨区
+				var suma_icon = L.icon({iconUrl: 'img/suma.png', iconSize: [90,90]});
+				var suma_rate = L.marker(suma_latlng,{icon: suma_icon});
+				//長田区
+				var nagata_icon = L.icon({iconUrl: 'img/nagata.png', iconSize: [90,90]});
+				var nagata_rate = L.marker(nagata_latlng,{icon: nagata_icon});				
+				//兵庫区
+				var hyougo_icon = L.icon({iconUrl: 'img/hyougo.png', iconSize: [90,90]});
+				var hyougo_rate = L.marker(hyougo_latlng,{icon: hyougo_icon});
+				//灘区
+				var nada_icon = L.icon({iconUrl: 'img/nada.png', iconSize: [90,90]});
+				var nada_rate = L.marker(nada_latlng,{icon: nada_icon});
+				//東灘区
+				var eastnada_icon = L.icon({iconUrl: 'img/higashinada.png', iconSize: [90,90]});
+				var eastnada_rate = L.marker(eastnada_latlng,{icon: eastnada_icon});
+				//北区
+				var kita_icon = L.icon({iconUrl: 'img/kita.png', iconSize: [90,90]});
+				var kita_rate = L.marker(kita_latlng,{icon: kita_icon});
+				//全国平均
+				var average_icon = L.icon({iconUrl: 'img/ave.png', iconSize: [90,90]});
+				var average_rate = L.marker(average_latlng,{icon: average_icon});
+								
+				//空き家率 X 高齢化世帯率　共に高い
+				var atticon = L.icon({iconUrl: 'img/exclamation1.png', iconSize: [50,50]});
+				var atticon2 = L.icon({iconUrl: 'img/exclamation2.png', iconSize: [50,50]});
+
+				//兵庫区
+				var hyougo_att = L.marker(hyougo_ex_latlng,{icon: atticon});
+				//長田区
+				var nagata_att = L.marker(nagata_ex_latlng,{icon: atticon});
+				//垂水区
+				var tarumi_att = L.marker(tarumi_ex_latlng,{icon: atticon});
+				//北区
+				var kita_att = L.marker(kita_ex_latlng, {icon: atticon2});
+				//須磨区
+				var suma_att = L.marker(suma_ex_latlng, {icon: atticon2});
+								
+				//高齢者率（レイヤー群）
+				var OldRate = L.layerGroup([tyuou_rate,nishi_rate,tarumi_rate,suma_rate,nagata_rate,
+							hyougo_rate,nada_rate,eastnada_rate,kita_rate,average_rate]);
+				//OldRate.addTo(map);
+				//空家率（レイヤー群）
+				var EmptyRate = L.layerGroup([hyougo_att,tarumi_att,nagata_att,kita_att,suma_att]);
+				
+		        // add layers
+                var baseLayers = {
+                    "OpenStreetMap": tileLayer
+                };
+                var overlays = {
+                  //  "Marker": mapMarker
+                  	"高齢者世帯率" : OldRate,
+                  	"空家率 X 高齢者" : EmptyRate
+                };
+                L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
+                
+               // control that shows state info on hover
+               var InfoControl = L.Control.extend({
+               
+               onAdd: function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+               },
+               
+               update: function (props) {
+                this._div.innerHTML = '<h4>Vacancy rate of Kobe</h4>' +  (props ?
+                '<b>' + props.N03_004 + '</b><br />' + props.N03_008 + '%'
+                : 'Hover over a prefecture');
+               }
+               });
+               
+               
+               var info = new InfoControl();
+               //info.addTo(map);
+			map.addControl(info);
+          
+                function getColor(d) {
+                return d > 22 ? '#800026' :
+                    d > 20  ? '#BD0026' :
+                    d > 18  ? '#E31A1C' :
+                    d > 16  ? '#FC4E2A' :
+                    d > 14   ? '#FD8D3C' :
+                    d > 12   ? '#FEB24C' :
+                    d > 10   ? '#FED976' :
+                    '#FFEDA0';
+                }
+                
+                function style(feature) {
+                return {
+				    weight: 2,
+				    opacity: 1,
+				    color: 'white',
+				    dashArray: '3',
+				    fillOpacity: 0.7,
+				    fillColor: getColor(feature.properties.N03_008)
+			    };
+		        }  
+                
+                
+                function highlightFeature(e) {
+		            var layer = e.target;
+		            layer.setStyle({
+			            weight: 2,
+			            color: 'red',
+			            dashArray: '',
+			            fillOpacity: 0.7
+		            });
+		            if (!L.Browser.ie && !L.Browser.opera) {
+			            layer.bringToFront();
+		            }
+
+		            info.update(layer.feature.properties);
+	            }
+
+	var geojson;
+
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		info.update();
+	}
+
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	} 
+                // add control scale 
+                L.control.scale().addTo(map);
+
+                // add geoJson 
+                L.geoJson(kobeCity, {style: style,
+		onEachFeature: onEachFeature}).addTo(map);
+                
+                var legend = L.control({position: 'bottomright'});
+
+		legend.onAdd = function (map) {
+
+			var div = L.DomUtil.create('div', 'info legend'),
+				grades = [0, 10, 12, 14, 16, 18, 20, 22],
+				labels = [],
+				from, to;
+
+			for (var i = 0; i < grades.length; i++) {
+				from = grades[i];
+				to = grades[i + 1];
+
+				labels.push(
+					'<i style="background:' + getColor(from + 1) + '"></i> ' +
+					from + (to ? '&ndash;' + to : '+'));
+			}
+
+//			div.innerHTML = labels.join('<br>');
+			div.innerHTML = '<b>Vacancy rate(%)</b><br/><br/>' + labels.join('<br>');
+			return div;
+		};
+
+		legend.addTo(map); 
+ 
+            }
+        </script>
+    </head>
+    <body onload='init();'>
+        <div id='map_elemnt' style='width: 1200px; height: 700px; border: solid 1px #999;'></div>
+    </body>
+</html>
