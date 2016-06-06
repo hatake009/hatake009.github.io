@@ -85,37 +85,71 @@
 				var average_rate = L.circle(average_latlng,2000, c_style);				
 				
 */
+                                //空き家世帯数
+                                //中央区
+                                var tyuou_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
+                                var tyuou_number =  L.marker(tyuou_latlng, {icon: tyuou_number_icon});
+                                //西区
+                                var nishi_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
+                                var nishi_number = L.marker(nishi_latlng,{icon: nishi_number_icon});
+                                //垂水区
+                                var tarumi_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
+                                var tarumi_number = L.marker(tarumi_latlng,{icon: tarumi_number_icon});
+                                //須磨区
+                                var suma_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
+                                var suma_number = L.marker(suma_latlng,{icon: suma_number_icon});
+                                //長田区
+                                var nagata_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
+                                var nagata_number = L.marker(nagata_latlng,{icon: nagata_number_icon});
+                                //兵庫区
+                                var hyougo_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
+                                var hyougo_number = L.marker(hyougo_latlng,{icon: hyougo_number_icon});
+                                //灘区
+                                var nada_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
+                                var nada_number = L.marker(nada_latlng,{icon: nada_number_icon});
+                                //東灘区
+                                var eastnada_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
+                                var eastnada_number = L.marker(eastnada_latlng,{icon: eastnada_number_icon});
+                                //北区
+                                var kita_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
+                                var kita_number = L.marker(kita_latlng,{icon: kita_number_icon});
+                                //全国平均
+                                var average_number_icon = L.icon({iconUrl: 'img/houses.png', iconSize: [90,90]});
+                                var average_number = L.marker(average_latlng,{icon: average_number_icon});
 
-				//中央区
-				var tyuou_icon = L.icon({iconUrl: 'img/chuuoh.png', iconSize: [90,90]});
-				var tyuou_rate =  L.marker(tyuou_latlng, {icon: tyuou_icon});
-				//西区
-				var nishi_icon = L.icon({iconUrl: 'img/nishi.png', iconSize: [90,90]});
-				var nishi_rate = L.marker(nishi_latlng,{icon: nishi_icon});
-				//垂水区
-				var tarumi_icon = L.icon({iconUrl: 'img/tarumi.png', iconSize: [90,90]});
-				var tarumi_rate = L.marker(tarumi_latlng,{icon: tarumi_icon});
-				//須磨区
-				var suma_icon = L.icon({iconUrl: 'img/suma.png', iconSize: [90,90]});
-				var suma_rate = L.marker(suma_latlng,{icon: suma_icon});
-				//長田区
-				var nagata_icon = L.icon({iconUrl: 'img/nagata.png', iconSize: [90,90]});
-				var nagata_rate = L.marker(nagata_latlng,{icon: nagata_icon});				
-				//兵庫区
-				var hyougo_icon = L.icon({iconUrl: 'img/hyougo.png', iconSize: [90,90]});
-				var hyougo_rate = L.marker(hyougo_latlng,{icon: hyougo_icon});
-				//灘区
-				var nada_icon = L.icon({iconUrl: 'img/nada.png', iconSize: [90,90]});
-				var nada_rate = L.marker(nada_latlng,{icon: nada_icon});
-				//東灘区
-				var eastnada_icon = L.icon({iconUrl: 'img/higashinada.png', iconSize: [90,90]});
-				var eastnada_rate = L.marker(eastnada_latlng,{icon: eastnada_icon});
-				//北区
-				var kita_icon = L.icon({iconUrl: 'img/kita.png', iconSize: [90,90]});
-				var kita_rate = L.marker(kita_latlng,{icon: kita_icon});
-				//全国平均
-				var average_icon = L.icon({iconUrl: 'img/ave.png', iconSize: [90,90]});
-				var average_rate = L.marker(average_latlng,{icon: average_icon});
+
+                                //高齢者世帯率
+
+                                //中央区
+                                var tyuou_icon = L.icon({iconUrl: 'img/chuuoh.png', iconSize: [90,90]});
+                                var tyuou_rate =  L.marker(tyuou_latlng, {icon: tyuou_icon});
+                                //西区
+                                var nishi_icon = L.icon({iconUrl: 'img/nishi.png', iconSize: [90,90]});
+                                var nishi_rate = L.marker(nishi_latlng,{icon: nishi_icon});
+                                //垂水区
+                                var tarumi_icon = L.icon({iconUrl: 'img/tarumi.png', iconSize: [90,90]});
+                                var tarumi_rate = L.marker(tarumi_latlng,{icon: tarumi_icon});
+                                //須磨区
+                                var suma_icon = L.icon({iconUrl: 'img/suma.png', iconSize: [90,90]});
+                                var suma_rate = L.marker(suma_latlng,{icon: suma_icon});
+                                //長田区
+                                var nagata_icon = L.icon({iconUrl: 'img/nagata.png', iconSize: [90,90]});
+                                var nagata_rate = L.marker(nagata_latlng,{icon: nagata_icon});
+                                //兵庫区
+                                var hyougo_icon = L.icon({iconUrl: 'img/hyougo.png', iconSize: [90,90]});
+                                var hyougo_rate = L.marker(hyougo_latlng,{icon: hyougo_icon});
+                                //灘区
+                                var nada_icon = L.icon({iconUrl: 'img/nada.png', iconSize: [90,90]});
+                                var nada_rate = L.marker(nada_latlng,{icon: nada_icon});
+                                //東灘区
+                                var eastnada_icon = L.icon({iconUrl: 'img/higashinada.png', iconSize: [90,90]});
+                                var eastnada_rate = L.marker(eastnada_latlng,{icon: eastnada_icon});
+                                //北区
+                                var kita_icon = L.icon({iconUrl: 'img/kita.png', iconSize: [90,90]});
+                                var kita_rate = L.marker(kita_latlng,{icon: kita_icon});
+                                //全国平均
+                                var average_icon = L.icon({iconUrl: 'img/ave.png', iconSize: [90,90]});
+                                var average_rate = L.marker(average_latlng,{icon: average_icon});
 								
 				//空き家率 X 高齢化世帯率　共に高い
 				var atticon = L.icon({iconUrl: 'img/exclamation1.png', iconSize: [50,50]});
@@ -133,8 +167,8 @@
 				var suma_att = L.marker(suma_ex_latlng, {icon: atticon2});
 
                                 //高齢者率（レイヤー群）
-                                var EmptyNumber = L.layerGroup([tyuou_rate,nishi_rate,tarumi_rate,suma_rate,nagata_rate,
-                                                        hyougo_rate,nada_rate,eastnada_rate,kita_rate,average_rate]);
+                                var EmptyNumber = L.layerGroup([tyuou_number,nishi_number,tarumi_number,suma_number,nagata_number,
+                                                        hyougo_number,nada_number,eastnada_number,kita_number,average_number]);
 								
 				//高齢者率（レイヤー群）
 				var OldRate = L.layerGroup([tyuou_rate,nishi_rate,tarumi_rate,suma_rate,nagata_rate,
