@@ -156,7 +156,6 @@
                onAdd: function (map) {
                 this._div = L.DomUtil.create('div', 'info');
                 this.update();
-                this.pic();
                 return this._div;
                },
                
@@ -166,11 +165,7 @@
                 : 'Hover over a prefecture');
                }
                });
-
-               pic: function (props) {
-			"高齢者世帯率" : OldRate
-               }
-               })
+               
                
                var info = new InfoControl();
                //info.addTo(map);
