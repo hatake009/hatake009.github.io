@@ -156,7 +156,6 @@
                onAdd: function (map) {
                 this._div = L.DomUtil.create('div', 'info');
                 this.update();
-                this.pic();
                 return this._div;
                },
                
@@ -165,13 +164,8 @@
                 '<b>' + props.N03_004 + '</b><br />' + props.N03_008 + '%'
                 : 'Hover over a prefecture');
                }
-
-               pic: function (props) {
-                this._div.innerHTML = '<h4>Vacancy rate of Kobe</h4>' +  (props ?
-                '<b>' + props.N03_004 + '</b><br />' + props.N03_008 + '%'
-                : 'Hover over a prefecture');
-               }
                });
+               
                
                var info = new InfoControl();
                //info.addTo(map);
