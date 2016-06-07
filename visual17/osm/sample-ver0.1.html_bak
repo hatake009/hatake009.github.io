@@ -161,7 +161,7 @@
                
                update: function (props) {
                 this._div.innerHTML = '<h4>Vacancy rate of Kobe</h4>' +  (props ?
-                '<b>' + props.N03_004 + '</b><br />' + props.N03_008 + '%' + '</b><br />' + props.N03_009 
+                '<b>' + props.N03_004 + '</b><br />' + props.N03_008 + '%'
                 : 'Hover over a prefecture');
                }
                });
