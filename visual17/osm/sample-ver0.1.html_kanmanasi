@@ -160,7 +160,6 @@
                },
                
                update: function (props) {
-		var suji;
                 this._div.innerHTML = '<h4>Vacancy rate of Kobe</h4>' +  (props ?
                 '<b>' + props.N03_004 + '</b><br />' + props.N03_008 + '%(' + props.N03_009 + '/' + props.N03_010 + ')'
                 : 'Hover over a prefecture');
