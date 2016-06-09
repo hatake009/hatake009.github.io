@@ -160,8 +160,8 @@
                },
                
                update: function (props) {
-                this._div.innerHTML = '<h4>Vacancy rate of Kobe</h4>' +  (props ?
-                '<b>' + props.N03_004 + '</b>' + ' ' + '<FONT size="5">' + props.N03_008 + '%' + '</FONT>' + '<br /><br />' + '空家:' + props.N03_009 + '戸' + '<br />' + '区全体:' + props.N03_010 + '戸'
+                this._div.innerHTML = '<h4>Vacancy rate of Kobe</h4>' + '<br />'  + (props ?
+                '<b>' + props.N03_004 + '</b>' + ' ' + '<FONT size="5">' + props.N03_008 + '%' + '</FONT>' + '<br /><br />' + '空家 :' + props.N03_009 + '戸' + '<br />' + '区全体:' + props.N03_010 + '戸'
                 : 'Hover over a prefecture');
                }
                });
