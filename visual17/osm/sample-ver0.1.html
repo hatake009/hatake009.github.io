@@ -161,7 +161,7 @@
                
                update: function (props) {
 		var suji = props.N03_009;
-		suji.toLocaleString();
+		suji.toString().replace(/(\d)(?=(\d{3})+$)/g , '$1,');
                 this._div.innerHTML = '<h4>Vacancy rate of Kobe</h4>' +  (props ?
                 '<b>' + props.N03_004 + '</b><br />' + props.N03_008 + '%(' + suji + '/' + props.N03_010 + ')'
                 : 'Hover over a prefecture');
